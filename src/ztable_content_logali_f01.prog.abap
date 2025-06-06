@@ -36,8 +36,11 @@ form init_2000 .
 
   try.
 
-      go_alv_display = cl_salv_gui_table_ida=>create( iv_table_name    = gv_tabname
-                                                      io_gui_container = go_cust_cont ).
+*      go_alv_display = cl_salv_gui_table_ida=>create( iv_table_name    = gv_tabname
+*                                                      io_gui_container = go_cust_cont ).
+
+      go_alv_display = cl_salv_gui_table_ida=>create_for_cds_view( iv_cds_view_name = gv_tabname
+                                                                   io_gui_container = go_cust_cont ).
 
     catch cx_salv_db_connection into data(lox_db_connection).
       message lox_db_connection->get_text( ) type 'I'.
